@@ -187,7 +187,7 @@ class LibvirtdState(MachineState):
         base_image = self._logged_exec(
             ["nix-build"] + self.depl._eval_flags(self.depl.nix_exprs) +
             ["--arg", "checkConfigurationOptions", "false",
-             "-A", "nodes.{0}.config.deployment.libvirtd.baseImage".format(self.name),
+             "-A", "nodes.\"{0}\".config.deployment.libvirtd.baseImage".format(self.name),
              "-o", temp_image_path],
             capture_stdout=True, env=newEnv).rstrip()
 
